@@ -10,42 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402010050) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "countries", force: :cascade do |t|
-    t.integer  "id_country"
-    t.string   "name"
-    t.string   "initials"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.integer  "id_location"
-    t.string   "name"
-    t.integer  "id_country"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "temperatures", force: :cascade do |t|
-    t.integer  "id_temperature"
-    t.decimal  "temperature"
-    t.integer  "generated_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.integer  "id_user"
-    t.string   "name"
-    t.string   "email"
-    t.text     "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end
