@@ -1,0 +1,1 @@
+$redis = Redis::Namespace.new("transic_uc_cache", :redis => Redis.new)

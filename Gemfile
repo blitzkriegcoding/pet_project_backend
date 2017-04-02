@@ -13,8 +13,11 @@ gem 'puma', '~> 3.0'
 gem 'jsonapi-resources'
 gem 'rest-client'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 3.0'
-
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'redis-rack-cache'
+gem 'responders'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
