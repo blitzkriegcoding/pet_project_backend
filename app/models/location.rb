@@ -1,4 +1,4 @@
 class Location < ApplicationRecord
 	belongs_to :country
-	has_many :temperatures
+	has_many :temperature
 end
