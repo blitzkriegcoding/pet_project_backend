@@ -5,7 +5,7 @@ class CreateTemperatures < ActiveRecord::Migration[5.0]
       t.integer :location_id
       t.integer :generated_at
       t.timestamps
-      add_reference :location, :temperature, foreign_key: true
+      t.references :locations, index: true, foreign_key: true
     end
   end
 end
