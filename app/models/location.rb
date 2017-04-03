@@ -21,6 +21,10 @@ class Location < ApplicationRecord
   end
   $redis.hgetall("#{data_current_country[0][2]}")
   end
+
+  def self.get_all_locations
+    self.select(:id, :name_location).order(name_location: :asc)
+  end
   
   private
   def self.get_current_country(location_id)

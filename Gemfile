@@ -18,7 +18,7 @@ gem 'redis-namespace'
 gem 'redis-rails'
 gem 'redis-rack-cache'
 gem 'responders'
-
+gem 'rack-cors'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
