@@ -13,12 +13,19 @@ class Location < ApplicationRecord
       $redis.hmset("#{data_current_country[0][2]}", "current_temp_kelvin", data_json_owa["main"]["temp"],\
         "current_temp_celsius", (data_json_owa["main"]["temp"] - 273).round(2),\
         "current_temp_farenheit", ((((data_json_owa["main"]["temp"] - 273) + 32) * 9) / 5).round(2),\
-        "location_id", data_current_country[0][3],
-        "dt_source", data_json_owa["dt"], 'code', 200)
-      
-      data = Array[data_json_owa["main"]["temp"], data_current_country[0][3], data_json_owa["dt"]]
+        "pressure", data_json_owa["main"]["pressure"], "humidity", data_json_owa["main"]["humidity"],\
+        "main", data_json_owa["weather"][0]["main"], "description", data_json_owa["weather"][0]["description"],\
+        "wind_speed", data_json_owa["wind"]["speed"], "icon", data_json_owa["weather"][0]["icon"], \
+        "location_id", data_current_country[0][3], "dt_source", data_json_owa["dt"], 'code', 200)
+
+      data = Array[data_current_country[0][3], \
+      data_json_owa["main"]["temp"], data_json_owa["main"]["pressure"],\
+      data_json_owa["main"]["humidity"], data_json_owa["main"]["temp_max"],\
+      data_json_owa["main"]["temp_min"], data_json_owa["weather"][0]["main"],\
+      data_json_owa["weather"][0]["description"], data_json_owa["wind"]["speed"],\
+      data_json_owa["weather"][0]["icon"], data_json_owa["dt"]]
       self.add_new_data(data)
-  end
+    end
   $redis.hgetall("#{data_current_country[0][2]}")
   end
 

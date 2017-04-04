@@ -10,7 +10,8 @@ class Temperature < ApplicationRecord
   end
 
   def self.store_temp_data(data)    
-    self.create(temperature: data[0], location_id: data[1], generated_at: data[2])
-  end
- 
+    self.create(location_id: data[0], temperature: data[1], pressure: data[2], humidity: data[3],\
+                temp_max: data[4], temp_min: data[5], main: data[6], description: data[7], wind_speed: data[8],\
+                icon: data[9], generated_at: data[10])
+  end 
 end

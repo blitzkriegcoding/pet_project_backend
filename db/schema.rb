@@ -27,18 +27,24 @@ ActiveRecord::Schema.define(version: 20170402010050) do
     t.integer  "country_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "countries_id"
-    t.index ["countries_id"], name: "index_locations_on_countries_id", using: :btree
+    t.index ["country_id"], name: "index_locations_on_country_id", using: :btree
   end
 
   create_table "temperatures", force: :cascade do |t|
-    t.decimal  "temperature"
     t.integer  "location_id"
+    t.decimal  "temperature"
+    t.decimal  "pressure"
+    t.decimal  "humidity"
+    t.decimal  "temp_max"
+    t.decimal  "temp_min"
+    t.string   "main"
+    t.text     "description"
+    t.string   "wind_speed"
+    t.string   "icon"
     t.integer  "generated_at"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "locations_id"
-    t.index ["locations_id"], name: "index_temperatures_on_locations_id", using: :btree
+    t.index ["location_id"], name: "index_temperatures_on_location_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,6 +56,6 @@ ActiveRecord::Schema.define(version: 20170402010050) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "locations", "countries", column: "countries_id"
-  add_foreign_key "temperatures", "locations", column: "locations_id"
+  add_foreign_key "locations", "countries"
+  add_foreign_key "temperatures", "locations"
 end
